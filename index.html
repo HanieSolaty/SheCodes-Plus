@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- LineIcon -->
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet" />
+
+    <!-- FontAwesome kit -->
+    <script src="https://kit.fontawesome.com/eb247dca4b.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- AJAX CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
+    <title>Weather App</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+  </head>
+  <body>
+    <div class="body-div d-flex justify-content-center align-items-center">
+      <div class="container main p-4 my-10">
+        <div class="row">
+          <div class="col-md-5 text-white text-center mb-4">
+            <!-- <div class="row"> -->
+            <!-- <div class="col-10 offset-1"> -->
+            <form action="">
+              <input
+                type="text"
+                class="form-control search-form"
+                id="searchInput"
+                aria-describedby="search city"
+                placeholder="Search"
+              />
+            </form>
+            <!-- </div> -->
+            <!-- <div class="offset-1"></div> -->
+            <!-- </div> -->
+          </div>
+          <div class="offset-1 col-md-2 mb-4">
+            <button type="button" class="btn btn-outline-primary my-btn px-4 py-2" id="search">Search</button>
+          </div>
+          <div class="offset-1 col-md-2 mb-4">
+            <button type="button" class="btn btn-outline-primary my-btn px-4 py-2" id="current">
+              Current
+            </button>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <!-- Weather icon -->
+
+          <!-- <div class="col-12">
+            <i class="fas fa-2x fa-cloud-rain text-white mb-2"></i>
+            </div> -->
+
+          <!-- Weather descreption -->
+
+          <!-- <div class="col-12 text-white mb-4">
+              <>Rainy</>
+            </div> -->
+          <div class="col-md-4 mb-1">
+            <div class="text-white mb-3">
+              <h6 class="display-6" id="city">London</h6>
+            </div>
+            <div class="text-white">
+              <h6 class="display-6 temp"><span id="temp">19</span><sup>°C</sup></h6>
+              <!-- <h4 class="display-6 my-h4">
+                <strong class="temp">19</strong> -->
+              <!-- Metric conversion -->
+
+              <!-- <strong
+                  ><sup
+                    ><a href="#" id="centigrade">°C</a> | <a href="#" pan id="fahrenheit">°F</a></sup
+                  ></strong
+                > -->
+              <!-- </h4> -->
+            </div>
+            <p>
+              <button
+                class="btn"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseDetail"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                <img class="more" src="images/down-arrow (3).png" alt="show more" />
+              </button>
+            </p>
+            <div class="collapse" id="collapseDetail">
+              <div class="mt-5">
+                <h5 class="detail text-white">Humidity: <span id="humidity">55</span>%</h5>
+                <h5 class="detail text-white">Wind: <span id="wind">2</span> km/h</h5>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-4 mb-5">
+            <div class="text-white mb-3 pt-5 detail">
+              <h5 class="detail" id="city">Humidity: 55%</h5>
+              <h5 class="detail" id="city">Wind: 2 km/h</h5>
+            </div>
+          </div> -->
+
+          <div class="offset-2 col-md-4 text-white mb-1 mr-2" id="dateANDtime">
+            <h5 class="display-6 day">Monday</h5>
+            <h4 class="fw-light month-date">Sep 10</h4>
+            <h4 class="fw-light time">15:02</h4>
+          </div>
+        </div>
+
+        <!--this is carousel for large or mediuem screens-->
+        <!-- <div class="container d-none d-sm-block mt-10">
+            <div id="carousel-bg" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner mb-2">
+                <div class="carousel-item active text-center">
+                  <div class="card-wrapper d-flex justify-content-center">
+                    <div class="card p-1 mx-4">
+                      <div class="card-body">
+                        <h5 class="card-title text-center text-white"><strong>14 °C</strong></h5>
+                        <p class="card-text text-white text-start">Sep 11<br /><strong>Tuesday</strong></p>
+                      </div>
+                    </div>
+                    <div class="card p-1 mx-4">
+                      <div class="card-body">
+                        <h5 class="card-title text-center text-white"><strong>10 °C</strong></h5>
+                        <p class="card-text text-white text-start">Sep 12<br /><strong>Wendsday</strong></p>
+                      </div>
+                    </div>
+                    <div class="card p-1 mx-2">
+                      <div class="card-body">
+                        <h5 class="card-title text-center text-white"><strong>18 °C</strong></h5>
+                        <p class="card-text text-white text-start">Sep 13<br /><strong>Thursday</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item text-center">
+                  <div class="card-wrapper d-flex justify-content-center">
+                    <div class="card p-1 mx-4">
+                      <div class="card-body">
+                        <h5 class="card-title text-center text-white"><strong>14 °C</strong></h5>
+                        <p class="card-text text-white text-start">Sep 14<br /><strong>Friday</strong></p>
+                      </div>
+                    </div>
+                    <div class="card p-1 mx-4">
+                      <div class="card-body">
+                        <h5 class="card-title text-center text-white"><strong>10 °C</strong></h5>
+                        <p class="card-text text-white text-start">Sep 15<br /><strong>Sunday</strong></p>
+                      </div>
+                    </div>
+                    <div class="card p-1 mx-2">
+                      <div class="card-body">
+                        <h5 class="card-title text-center text-white"><strong>18 °C</strong></h5>
+                        <p class="card-text text-white text-start">Sep 16<br /><strong>Saturday</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carousel-bg"
+                data-bs-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carousel-bg"
+                data-bs-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div> -->
+        <!--this is carousel for small screens-->
+        <!-- <div class="container d-sm-none">
+            <div id="carousel-sm" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner mb-2">
+                <div class="carousel-item active text-center">
+                  <div class="card-wrapper d-flex justify-content-center">
+                    <div class="card p-1 mx-4">
+                      <div class="card-body">
+                        <h5 class="card-title text-center text-white"><strong>14 °C</strong></h5>
+                        <p class="card-text text-white text-start">Sep 11<br /><strong>Tuesday</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item text-center">
+                  <div class="card-wrapper d-flex justify-content-center">
+                    <div class="card p-1 mx-4">
+                      <div class="card-body">
+                        <h5 class="card-title text-center text-white"><strong>10 °C</strong></h5>
+                        <p class="card-text text-white text-start">Sep 12<br /><strong>Wendsday</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item text-center">
+                  <div class="card-wrapper d-flex justify-content-center">
+                    <div class="card p-1 mx-2">
+                      <div class="card-body">
+                        <h5 class="card-title text-center text-white"><strong>18 °C</strong></h5>
+                        <p class="card-text text-white text-start">Sep 13<br /><strong>Thursday</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item text-center">
+                  <div class="card-wrapper d-flex justify-content-center">
+                    <div class="card p-1 mx-4">
+                      <div class="card-body">
+                        <h5 class="card-title text-center text-white"><strong>14 °C</strong></h5>
+                        <p class="card-text text-white text-start">Sep 14<br /><strong>Friday</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item text-center">
+                  <div class="card-wrapper d-flex justify-content-center">
+                    <div class="card p-1 mx-4">
+                      <div class="card-body">
+                        <h5 class="card-title text-center text-white"><strong>10 °C</strong></h5>
+                        <p class="card-text text-white text-start">Sep 15<br /><strong>Sunday</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item text-center">
+                  <div class="card-wrapper d-flex justify-content-center">
+                    <div class="card p-1 mx-2">
+                      <div class="card-body">
+                        <h5 class="card-title text-center text-white"><strong>18 °C</strong></h5>
+                        <p class="card-text text-white text-start">Sep 16<br /><strong>Saturday</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carousel-sm"
+                data-bs-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carousel-sm"
+                data-bs-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div> -->
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+.body-div {
+  width: 100vw;
+  height: 100vh;
+}
+.main {
+  background-image: url('images/background.jpg');
+  background-size: cover;
+  max-width: 800px;
+  max-height: 500px;
+  border-radius: 10px;
+}
+
+.my-h4 {
+  margin: 0;
+}
+
+/* .search {
+  color: rgba(255, 255, 255, 0.868);
+  background-color: #ffffff33;
+  border: 3px solid #fff;
+  border-radius: 25px;
+} */
+
+.search-form {
+  color: #ffffff33;
+  background-color: rgb(193, 217, 244);
+  background-image: url(images/search-alt.svg);
+  background-position: 80px center;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+}
+
+.my-btn {
+  background-color: rgb(193, 217, 244);
+  color: #0079fe;
+  border-radius: 30px;
+  font-weight: 500;
+}
+
+.my-btn:hover {
+  border-color: rgb(193, 217, 244);
+  font-weight: 700;
+}
+
+.detail {
+  font-weight: 400;
+}
+
+.more {
+  width: 30px;
+}
+
+.card {
+  background-color: #ffffff25;
+  width: calc(60% / 3);
+}
+
+@media screen and (max-width: 575px) {
+  .card {
+    width: 70%;
+  }
+}
