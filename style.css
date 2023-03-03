@@ -55,6 +55,10 @@
   width: calc(60% / 3);
 }
 
+.src-code {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 575px) {
   .card {
     width: 70%;
