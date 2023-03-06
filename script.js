@@ -100,7 +100,7 @@ function handlePosition(position) {
   /* console.log(lat);
   console.log(lon); */
   let apiKey = '502dc8f7ae36e57af1974e18d16a86f8';
-  let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=&appid=${apiKey}`;
   /*debug*/
 
   /* console.log(apiUrl); */
